@@ -1,6 +1,4 @@
-/* Evyatar Ben David
-
-*/
+// Evyatar Ben David
 public class Answer {
 
 	//  2018 A6_87, Question 2, Complications O(1), O(n)
