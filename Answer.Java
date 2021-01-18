@@ -1,9 +1,9 @@
 /* Evyatar Ben David
-    2018 A6_87
-    Question 2.
-Complications O(1), O(n)
+
 */
 public class Answer {
+
+	//  2018 A6_87, Question 2, Complications O(1), O(n)
 	public static boolean what(int[] a, int num) {
 		int right = 0;
 		int left = 0;
