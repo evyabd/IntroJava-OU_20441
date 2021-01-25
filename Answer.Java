@@ -90,6 +90,7 @@ public class Answer {
 
 	//------------------------------------------------------------
 	//2020 b_84 question 2
+	// O(log(n));
 	/*
 	public void findFactors(int n) {
 		int low = 0;
@@ -105,6 +106,7 @@ public class Answer {
 		int high_num = mid;
 		int low_num = n / mid;
 		System.out.println(high_num + "*" + low_num + "=" + n);
+		return;
 	}
 
 	 */
@@ -124,7 +126,25 @@ public class Answer {
 			return false;
 		return sumPower3(num, x * 3, sum + x) || sumPower3(num, x * 3, sum);
 	}
+	//---------------------------------------------------------------
+	public static void main(String[] args) {
+		int[] a = {2,5, 10 , 20, 50};
+		System.out.println(makeSum(a, 40, 4));
+	}
 
+	public static int makeSum(int[] lengths, int k, int num){
+		return makeSum(lengths, k, num, lengths.length - 1);
+	}
+
+	private static int makeSum(int[] lengths, int k, int num, int i){
+		if(i < 0)
+			return 0;
+		if(k == 0)
+			return 1;
+		if(num == 0)
+			return 0;
+		return makeSum(lengths, k - lengths[i] , num - 1, i) + makeSum(lengths, k, num, i - 1);
+	}
 	//------------------------------------------------------------------
 	// 2019_B 85 question 2
 	//effiency O(lonN), O(1)
@@ -192,5 +212,25 @@ public class Answer {
 		sum = Math.max(Math.max(longestSlope(mat, num, i + 1, j, 1, sum, temp), longestSlope(mat, num, i - 1, j, 1, sum, temp)),
 				Math.max(longestSlope(mat, num, i, j + 1, 1, sum, temp), longestSlope(mat, num, i, j - 1, 1, sum, temp)));
 		return sum;
+	}
+	//--------------------------------------
+	// 2018A_85 question 2. Time O(n), space O(1);
+	public static int what (int[] a){
+		int sum = 0;
+		for(int i = 0; i < a.length; i++){
+			sum += a[i];
+		}
+		int right = 0, left = a.length -1;
+		while (right <= left){
+			if(sum % 2 == 1)
+				return left - right +1;
+			if(a[right] % 2 == 1){
+				sum -= a[right];
+				right++;
+			}
+			sum -= a[left];
+			left--;
+		}
+		return left - right +1;
 	}
 }
